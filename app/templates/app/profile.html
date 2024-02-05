@@ -1,0 +1,37 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+{% block main-content %}
+
+<div class="container my-5">
+  <div class="row">
+    {% if messages %} 
+   {% for message in messages %}
+   <br>
+       <p id="msg"{% if message.tags %} class="alert alert-{{ message.tags }} mb-5"{% endif %}>{{ message }}</p>
+       <br>
+   {% endfor %}
+{% endif %}
+  <h3>Welcome {{ request.user|capfirst }}</h3>
+    <div class="col-sm-2">
+    <ul class="list-unstyled">
+    <li class="d-grid"><a href="{% url 'profile' %}" class="btn {{active}}">Profile</a></li>
+    <li class="d-grid"><a href="{% url 'address' %}" class="btn">Address</a></li>
+    </ul>
+    </div>
+    <div class="col-sm-8 offset-sm-1">
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        {% for fm in form %}
+        {{fm.label_tag}}
+        {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small> <br> 
+        {% endfor %}
+        <div class="col-12 mt-3">
+          <button type="submit" class="btn {{active}}">Submit</button>
+        </div>
+   </div>
+   </form>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}
