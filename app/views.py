@@ -226,6 +226,7 @@ class CustomerRegistrationView(View):
  def get(self,request):
   form = CustomerRegistrationForm()
   return render(request,'app/customerregistration.html',{'form':form})
+
  def post(self,request):
   form = CustomerRegistrationForm(request.POST)
   if form.is_valid():

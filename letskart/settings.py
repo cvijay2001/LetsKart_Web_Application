@@ -126,4 +126,24 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 LOGIN_REDIRECT_URL = '/profile/'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'kumarrrahul1543@gmail.com'
+EMAIL_HOST_PASSWORD = 'dwrnllshzsnefyxp'
+
+
+
+#  MAIL_USERNAME ="kumarrrahul1543@gmail.com",
+#     MAIL_PASSWORD = "dpxexdromcnrhiza",
+#     MAIL_FROM = "kumarrrahul1543@gmail.com",
+#     MAIL_PORT = 587,
+#     MAIL_SERVER="smtp.gmail.com",
+#     MAIL_STARTTLS = True,
+#     MAIL_SSL_TLS = False,
+#     USE_CREDENTIALS = True,
+#     VALIDATE_CERTS = True,
