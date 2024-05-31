@@ -47,7 +47,7 @@ urlpatterns = [
     path('laptop/<slug:data>', views.laptop, name='laptopdata'),
 
     # path('login/', views.login, name='login'),
-    path('accounts/login/', auth_views.LoginView.as_view(template_name='app/login.html',
+    path('accounts/login/', views.CustomLoginView.as_view(template_name='app/login.html',
     authentication_form=LoginForm), name='login'),
 
     path('logout/',auth_views.LogoutView.as_view(next_page='login'),name='logout'),
@@ -62,6 +62,15 @@ urlpatterns = [
 
     path('registration/',views.CustomerRegistrationView.as_view(),name='customerregistration'),
 
+    path('current-time/', views.current_time_view, name='current_time'),
 
 ] + static(settings.MEDIA_URL,document_root = settings
 .MEDIA_ROOT)
+
+
+urlpatterns+=[
+    path('registration/', views.CustomerRegistrationView.as_view(), name='customerregistration'),
+    # path('verify/<str:uidb64>/<str:token>/', views.verify, name='verify'),
+    path('verify/<str:data>/', views.verify, name='verify'),
+    # /<str:data>/'
+]

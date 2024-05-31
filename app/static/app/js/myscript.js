@@ -99,4 +99,4 @@ $('.remove-cart').click(function(){
 
 setTimeout(function () {
     document.getElementById('msg').style.display = 'none';
-}, 2000);
+}, 3000);

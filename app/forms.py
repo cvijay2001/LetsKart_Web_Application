@@ -15,6 +15,7 @@ class CustomerRegistrationForm(UserCreationForm):
         fields=['username','email','password1','password2']
         widgets = {'username': forms.TextInput(attrs={'class':'form-control'})}
 
+
 class LoginForm(AuthenticationForm):
     username = UsernameField(widget=forms.TextInput(attrs={'autofocus':True,'class':'form-control'}))
     # username = forms.CharField(widget=forms.TextInput(attrs={'autofocus':True,'class':'form-control'}))
@@ -73,4 +74,6 @@ class CustomerProfileForm(forms.ModelForm):
         'state': forms.Select(attrs={'class':'form-control'}),
         'zipcode': forms.NumberInput(attrs={'class':'form-control'})
         }
-    
+
+
+

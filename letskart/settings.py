@@ -14,19 +14,20 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+from decouple import config
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ssc%=k3#sz1r0tdpd(p4bp6wb+pyn64v)brufn0)2hufkdl_wj'
+# SECRET_KEY = 'django-insecure-ssc%=k3#sz1r0tdpd(p4bp6wb+pyn64v)brufn0)2hufkdl_wj'
+SECRET_KEY=  config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -37,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # "django.conf.urls.defaults",
+    # 'background_task',
     'app',
 ]
 
@@ -100,17 +103,42 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+#Email configuration 
+
+EMAIL_BACKEND = config('EMAIL_BACKEND')
+
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
+EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_VERIFICATION_TIME_IN_MINUTES = config("EMAIL_VERIFICATION_TIME_IN_MINUTES")
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
+# LANGUAGE_CODE = 'en-us'
+
+# TIME_ZONE = 'UTC'
+
+# USE_I18N = True
+
+# USE_TZ = True
+
+# settings.py
+
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
+USE_L10N = True
+
 USE_TZ = True
+
 
 
 # Static files (CSS, JavaScript, Images)
@@ -128,22 +156,3 @@ MEDIA_ROOT = BASE_DIR / 'media'
 LOGIN_REDIRECT_URL = '/profile/'
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'kumarrrahul1543@gmail.com'
-EMAIL_HOST_PASSWORD = 'dwrnllshzsnefyxp'
-
-
-
-#  MAIL_USERNAME ="kumarrrahul1543@gmail.com",
-#     MAIL_PASSWORD = "dpxexdromcnrhiza",
-#     MAIL_FROM = "kumarrrahul1543@gmail.com",
-#     MAIL_PORT = 587,
-#     MAIL_SERVER="smtp.gmail.com",
-#     MAIL_STARTTLS = True,
-#     MAIL_SSL_TLS = False,
-#     USE_CREDENTIALS = True,
-#     VALIDATE_CERTS = True,
