@@ -26,7 +26,7 @@ def generate_verification_link(request, user, token):
     uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
     
     # Set the desired expiration time (e.g., 24 hours from now)
-    expiration_time = timezone.now() + timedelta(minutes=settings.EMAIL_VERIFICATION_TIME_IN_MINUTES)
+    expiration_time = timezone.now() + timedelta(minutes=int(settings.EMAIL_VERIFICATION_TIME_IN_MINUTES))
     
     # Create a signed URL with the token and expiration time
     signed_data = {'uidb64': uidb64, 'token': token, 'expires': expiration_time.isoformat()}
